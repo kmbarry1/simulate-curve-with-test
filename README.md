@@ -14,5 +14,5 @@ There is a lot that can be done based on this PoC, especially if leveraging the 
 The downside of basing an analysis on this is that solving, say, for the A parameter as a function of slippage for a 
 given swap size has to be done iteratively using something like a binary search, whereas if you're just reimplementing
 Curve pools in Python, you can easily write a one-and-done function for it (and have access to innumerable Python math
-libraries besies). The advantage of basing an analysis on this is that you are sure you are perfectly modeling the behavior
+libraries besides). The advantage of basing an analysis on this is that you are sure you are perfectly modeling the behavior
 of a Curve pool because you are using the EVM bytecode implementation as your source of truth.
