@@ -1,66 +1,16 @@
-## Foundry
+# Simulating Curve Pools Using the Actual Implementation
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This repo is a proof of concept of how to deploy a Curve pool in a Foundry Solidity test.
 
-Foundry consists of:
+Install Foundry: https://book.getfoundry.sh/getting-started/installation
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+Run to see output:
+`forge test -vv --fork-url <ETH RPC URL>`
 
-## Documentation
+There is a lot that can be done based on this PoC, especially if leveraging the various Foundry cheat codes: https://book.getfoundry.sh/cheatcodes/ .
 
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+The downside of basing an analysis on this is that solving, say, for the A parameter as a function of slippage for a 
+given swap size has to be done iteratively using something like a binary search, whereas if you're just reimplementing
+Curve pools in Python, you can easily write a one-and-done function for it (and have access to innumerable Python math
+libraries besies). The advantage of basing an analysis on this is that you are sure you are perfectly modeling the behavior
+of a Curve pool because you are using the EVM bytecode implementation as your source of truth.
