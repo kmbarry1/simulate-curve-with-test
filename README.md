@@ -4,6 +4,8 @@ This repo is a proof of concept of how to deploy a Curve pool in a Foundry Solid
 
 Install Foundry: https://book.getfoundry.sh/getting-started/installation
 
+Setup: `forge install`
+
 Run to see output:
 `forge test -vv --fork-url <ETH RPC URL>`
 
